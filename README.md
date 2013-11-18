@@ -53,7 +53,7 @@ Just copy the src folder and pom.xml to the JBoss EWS - Tomcat 7 application cre
 ### connection pooling (applicable, if you want to test it on a local servlet container)
 
 This application assumes that the servlet container has a connection pooling enabled for a PostgreSQL database 
-with a data source named 'jdbc/PostgreSQLDS'.  This is the default datasource defined by Openshift JBOSS EWS (or Tomcat)
+with a data source named 'jdbc/jreadings'.  This is the default datasource defined by Openshift JBOSS EWS (or Tomcat)
 project for PostgreSQL cartridge. To run the application in the local servlet container, just put it in
 $CATALINA_HOME/conf/context.xml with appropriate database authentication.
 
@@ -61,7 +61,7 @@ $CATALINA_HOME/conf/context.xml with appropriate database authentication.
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <!-- Specify a JDBC datasource -->
-    <Resource name="jdbc/PostgreSQLDS" auth="Container" type="javax.sql.DataSource"
+    <Resource name="jdbc/jreadings" auth="Container" type="javax.sql.DataSource"
         maxActive="20" maxIdle="5" maxWait="10000"
         username="<db user>" password="<db password>" driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql:<db name>" />

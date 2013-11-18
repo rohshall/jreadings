@@ -49,7 +49,7 @@ public class ReadingService {
 
     public ReadingService() {
         try {
-            emf = Persistence.createEntityManagerFactory("PostgreSQLDS");
+            emf = Persistence.createEntityManagerFactory("jreadings");
         } catch (Exception e) {
             logger.severe("Database connection error: " + e.toString());
         }

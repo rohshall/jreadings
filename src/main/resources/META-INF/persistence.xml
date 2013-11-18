@@ -2,11 +2,11 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="PostgreSQLDS" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="jreadings" transaction-type="RESOURCE_LOCAL">
             <!-- Eclipselink persistence provider -->
             <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
             <!-- JNDI name of the datasource -->
-            <non-jta-data-source>java:comp/env/jdbc/PostgreSQLDS</non-jta-data-source>
+            <non-jta-data-source>java:comp/env/jdbc/jreadings</non-jta-data-source>
             <!-- JPA entities must be registered here -->
             <class>com.salquestfl.model.DeviceType</class>
             <class>com.salquestfl.model.Device</class>
