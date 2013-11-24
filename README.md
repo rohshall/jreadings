@@ -47,7 +47,8 @@ Readings are deliberately defined as strings to suport multiple kind of readings
 
 ### Deployment
 
-Just copy the src folder and pom.xml to the JBoss EWS - Tomcat 7 application created by Openshift.
+1. Copy the src folder and pom.xml to the JBoss EWS - Tomcat 7 application created by Openshift.
+2. Make sure tomcat's lib directory has postgresql driver jar
 
 
 ### connection pooling (applicable, if you want to test it on a local servlet container)

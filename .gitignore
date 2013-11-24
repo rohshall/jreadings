@@ -1,4 +1,8 @@
 target/
+# eclipse
 .classpath
 .project
 .settings/
+# idea
+.idea
+jreadings.iml
