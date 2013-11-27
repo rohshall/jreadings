@@ -9,7 +9,7 @@
   <!-- this need same with resteasy servlet url-pattern -->
   <context-param>
     <param-name>resteasy.resources</param-name>
-    <param-value>com.salquestfl.DeviceService, com.salquestfl.ReadingService</param-value>
+    <param-value>com.salquestfl.DeviceService</param-value>
   </context-param>
   <context-param>
     <param-name>resteasy.servlet.mapping.prefix</param-name>
@@ -32,5 +32,21 @@
     <servlet-name>resteasy</servlet-name>
     <url-pattern>/api/1/*</url-pattern>
   </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Devices management</web-resource-name>
+            <url-pattern>/api/1/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Administration</realm-name>
+    </login-config>
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
 </web-app>
 

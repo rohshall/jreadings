@@ -37,7 +37,7 @@ import javax.annotation.security.RolesAllowed;
 import com.salquestfl.model.*;
 
 
-@Path("devices")
+@Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class DeviceService {
 
@@ -58,6 +58,7 @@ public class DeviceService {
 
     @PermitAll
     @GET
+    @Path("devices")
     public List<Device> getDevices() throws SQLException {
         EntityManager em = emf.createEntityManager();
         try {
@@ -72,6 +73,7 @@ public class DeviceService {
     @RolesAllowed("admin")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Path("admin/devices")
     public Response createDevice(Map<String, String> valueMap) throws SQLException {
         EntityManager em = emf.createEntityManager();
         try {
@@ -99,7 +101,7 @@ public class DeviceService {
 
     @PermitAll
     @GET
-    @Path("{ deviceMacAddr : \\d+ }")
+    @Path("devices/{ deviceMacAddr : \\d+ }")
     public Device getDevice(@PathParam("deviceMacAddr") String deviceMacAddr) throws SQLException {
         EntityManager em = emf.createEntityManager();
         try {
@@ -118,7 +120,21 @@ public class DeviceService {
 
     @PermitAll
     @GET
-    @Path("{ deviceMacAddr : \\d+ }/readings")
+    @Path("readings")
+    public List<Reading> getAllReadings() throws SQLException {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Query query = em.createQuery("select r from Reading r");
+            List<Reading> result = (List<Reading>) query.getResultList();
+            return result;
+        } finally {
+            em.close();
+        }
+    }
+
+    @PermitAll
+    @GET
+    @Path("devices/{ deviceMacAddr : \\d+ }/readings")
     public List<Reading> getDeviceReadings(@PathParam("deviceMacAddr") String deviceMacAddr,
             @QueryParam("from") String from, @QueryParam("to") String to) throws SQLException {
         EntityManager em = emf.createEntityManager();
@@ -155,7 +171,7 @@ public class DeviceService {
 
     @RolesAllowed("admin")
     @POST
-    @Path("{ deviceMacAddr : \\d+ }/readings")
+    @Path("admin/devices/{ deviceMacAddr : \\d+ }/readings")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createDeviceReadings(@PathParam("deviceMacAddr") String deviceMacAddr, Map<String, String> valueMap) throws SQLException {
         EntityManager em = emf.createEntityManager();
